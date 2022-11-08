@@ -5,27 +5,29 @@ import useData from '../hooks/useData';
 
 const Search = () => {
 
-    const { setData: setCharacter} = useData();
+    ///hook
+    const {setData} = useData();
 
-    const [searchCharacter, setSearchCharacter] = useState('')
+    const [id, setId] = useState('');
 
     const handelSearch = () => {
-        axios.get(`https://rickandmortyapi.com/api/character/?name=${searchCharacter}`)
-        .then(res => setCharacter(res.data));
+        axios.get(`https://rickandmortyapi.com/api/location/${id}`)
+        .then(res => setData(res?.data));
     }
 
-    console.log('search', searchCharacter)
     return (
-        <div>
-            <h2>Search</h2>
-            <label htmlFor='name'>Character</label>
-            <input 
-                type="text"
-                id='name'
-                onChange={(e) => setSearchCharacter(e.target.value)}
-                value={searchCharacter}
-            />
-            <button onClick={handelSearch}>Search</button>
+        <div className='search'>
+            <form>
+                <label htmlFor='id'>ID</label>
+                <input 
+                    type="text"
+                    id='id'
+                    onChange={(e) => setId(e.target.value)}
+                    value={id}
+                />
+                <button onClick={handelSearch}>Search</button>
+            </form>
+            <h2>Search</h2>        
         </div>
     );
 };

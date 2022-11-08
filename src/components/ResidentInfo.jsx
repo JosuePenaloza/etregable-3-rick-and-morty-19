@@ -4,8 +4,6 @@ import axios from 'axios';
 import useData from '../hooks/useData';
 
 const ResidentInfo = ({urlResidents}) => {
-
-    //const [resident, setResident] = useState([]);
     
     ////hook
     const {data: resident,setData:setResident} = useData();
@@ -15,29 +13,21 @@ const ResidentInfo = ({urlResidents}) => {
         .then(res => setResident(res.data))
     }, []);
 
-    console.log("resident", resident)
     return (
-        <div>
-            <h3>{resident.name}</h3>
-            <div>
-                <img src={resident.image} />
+        <div className='column'>
+            <h2>Name: <br/>{resident.name}</h2>
+            <img src={resident.image} />
+            <div className='ResidentInfo'>        
+                <ul>
+                    <li><h3>Species: {resident.species}</h3></li>
+                    <li><h3>Status: {resident.status}</h3></li>
+                    <li><h3>Birthplace: {resident.origin?.name}</h3></li>
+                    <li><h3>Number of episodes: {resident.episode?.length}</h3></li>
+                </ul> 
             </div>
-            <ul>
-                <li>{resident.status}</li>
-                <li>{resident.origin?.name}</li>
-                <li>{resident.episode?.length}</li>
-            </ul>
-        </div>
+            <hr/>
+        </div>    
     );
 };
 
 export default ResidentInfo
-/*
-    Nombre (“name”).
-Imagen (“image”).
-Status: Vivo, muerto o desconocido (“status”).
-Lugar de origen (“origin.name”).
-Cantidad de episodios donde aparece (episode.length).
-
-
-*/

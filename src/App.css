@@ -1,4 +1,5 @@
 #root {
+  width: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -32,10 +33,70 @@
   }
 }
 
+.App {
+  padding-top: 60px;
+  
+}
+
+.location {
+  display: grid;
+  color: turquoise;
+  
+}
+
 .card {
   padding: 2em;
 }
 
 .read-the-docs {
   color: #888;
+}
+
+.logo {
+  
+  display: flex;
+  width: 100%;
+  height: 50vh;
+  justify-content: center;
+  background-repeat: no-repeat;
+}
+
+
+.card {
+  padding: 20px;
+  border-radius: 15px;
+  display: grid;
+  gap: 1rem;
+  grid-auto-rows: 22rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%,26rem), 1fr));
+}
+
+.column {
+  width: 100%;
+  display: flex;
+  /* background-image: url(../src/assets/img/portal.gif); */
+  background-repeat: no-repeat;
+  background-position: center center;
+  color: turquoise;
+  align-items: center;
+}
+
+.column img{
+  display: flow-root;
+  width: 35%;
+  height: auto;
+  margin: auto;
+  border-radius: 10%;
+  object-fit: cover;
+}
+
+.ResidentInfo {
+  box-shadow: 2px 2px 8px rgba(228, 95, 7, 0.2);
+  padding: 20px;
+  border-radius: 15px;
+  margin: 5px;
+}
+
+.ResidentInfo img {
+  
 }

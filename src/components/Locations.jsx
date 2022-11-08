@@ -1,13 +1,12 @@
 import axios from 'axios';
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import ResidentInfo from './ResidentInfo';
 import useData from '../hooks/useData';
 import Search from './Search';
+import buuu from '../assets/audio/WUBBA.mp3.webm'
 
 const Locations = () => {
-
-    //const [ locations, setLocations] = useState([]);
 
     ////hook
     const {data: locations, setData: setLocations} = useData()
@@ -20,36 +19,28 @@ const Locations = () => {
         .then(res => setLocations(res.data))
     }, []);
 
-    console.log("1",locations.residents)
     return (
-        <div>
+        <div className='location'>
             <Search />
             <div>
+                <audio src={buuu} />
                 <h1>{locations.name}</h1>
                 <ul>
-                    <li>{locations.type}</li>
-                    <li>{locations.dimension}</li>
-                    <li>{locations.residents?.length}</li>
+                    <li><h3>Type: {locations.type}</h3></li>
+                    <li><h3>Dimension: {locations?.dimension}</h3></li>
+                    <li><h3>Residens: {locations.residents?.length}</h3></li>
                 </ul>
+                <hr/>
             </div>
-            
-            {
-                locations.residents?.map(url => (
-                    <ResidentInfo urlResidents={url} key={url} />
-                ))
-            }
+            <div className='card'>
+                {
+                    locations.residents?.map(url => (
+                        <ResidentInfo urlResidents={url} key={url} />
+                    ))
+                }
+            </div>
         </div>
     );
 };
 
 export default Locations;
-
-
-/*
-Nombre (“name”)
-Tipo (“type”)
-Dimensión a la que pertenece (“dimension”)
-La cantidad de residentes (residents.length).
-
-
-*/
