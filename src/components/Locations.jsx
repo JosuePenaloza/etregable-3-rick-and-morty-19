@@ -11,10 +11,13 @@ const Locations = () => {
     ////hook
     const {data: locations, setData: setLocations} = useData()
 
-    ///// locasion random
-    const random = Math.floor(Math.random() * 126) +1
+    
 
     useEffect(() => {
+
+        ///// locasion random
+    const random = Math.floor(Math.random() * 126) +1
+    
         axios.get(`https://rickandmortyapi.com/api/location/${random}`)
         .then(res => setLocations(res.data))
     }, []);
